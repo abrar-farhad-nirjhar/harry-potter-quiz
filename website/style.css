@@ -1,0 +1,29 @@
+.custom-header{
+    /* background-color: gold; */
+    font-size: 60px;
+    color: black;
+    text-align: center;
+    border-bottom: 3px solid;
+    /* border-color: green; */
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 10%;
+    /* opacity: .25; */
+
+}
+
+.question{
+    font-size: 40px;
+    /* background-color: grey; */
+    text-align: center;
+    border: 20px;
+    border-color: black;
+    padding: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-left:10%;
+    margin-right: 10%;
+    color: black;
+    opacity: .8;
+    border-radius: 5px
+    
+}
