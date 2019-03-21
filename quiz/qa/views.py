@@ -30,8 +30,7 @@ class CorrectViewset(generics.ListAPIView):
     def get_queryset(self):
         q_id = self.kwargs['id']
         queryset = Correct.objects.filter(correct__question__id=q_id)
-        print("Hello"*20)
-        print(queryset)
+        
         return queryset
 
 

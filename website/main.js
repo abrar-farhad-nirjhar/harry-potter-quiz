@@ -18,11 +18,39 @@ call.getQuestion().then((data)=>{
     document.getElementById('question').innerHTML = question_text
 
     call.getOptions(question_id).then(data=>{
-        console.log(data)
-
-        console.log(data[0].option)
+        
 
         ui.CreateOptions(data)
+        console.log(data)
+
+        data.forEach(element => {
+            document.getElementById(element.id).addEventListener('click', (event)=>{
+
+                event.preventDefault()
+                console.log(question_id)
+                call.getCorrect(question_id).then(data_two=>{
+                    selected = element.option
+                    
+                    correct_answer = data_two[0].correct.option 
+                    correct_id = data_two[0].correct.id
+                    if(selected==correct_answer){
+                        console.log(true)
+                        document.getElementById(element.id).style.backgroundColor="#32CD32"
+                    }
+                    else{
+                        console.log(false)
+                        document.getElementById(element.id).style.backgroundColor = "#B22222"
+                        document.getElementById(correct_id).style.backgroundColor= "#32CD32"
+                    }
+                })
+
+            })
+        });
     })
+
+    
+    
+
+    
 });
 

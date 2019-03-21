@@ -19,4 +19,10 @@ class API{
         const data = await response.json()
         return data
     }
+
+    async getCorrect(id){
+        const response = await fetch(this.api+'correct/'+id)
+        const data = response.json()
+        return data
+    }
 }
