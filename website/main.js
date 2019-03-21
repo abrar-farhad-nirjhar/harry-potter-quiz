@@ -1,7 +1,14 @@
 const call = new API()
 const ui = new UI()
+const store = new Storage()
 
 
+
+// sessionStorage.turn = 1
+// sessionStorage.score = 0
+// alert(sessionStorage.turn)
+
+console.log(sessionStorage)
 
 call.getQuestion().then((data)=>{
     
@@ -19,6 +26,13 @@ call.getQuestion().then((data)=>{
 
     call.getOptions(question_id).then(data=>{
         
+        // if(sessionStorage.turn==5){
+        //     sessionStorage
+        // }
+
+        store.addTurn()
+        console.log("This is the turn")
+        console.log(store.getTurn())
 
         ui.CreateOptions(data)
         console.log(data)
@@ -36,12 +50,35 @@ call.getQuestion().then((data)=>{
                     if(selected==correct_answer){
                         console.log(true)
                         document.getElementById(element.id).style.backgroundColor="#00ff00"
+
+                        for(let i=0; i<data.length; i++){
+                            if(data[i].id!=correct_id){
+                                document.getElementById(data[i].id).hidden=true
+                            }
+                        }
+
+                        sessionStorage.score+=1
+
+                        alert('score '+sessionStorage.score)
+
+                        alert("Correct!!")
+
+                        
                     }
                     else{
                         console.log(false)
                         document.getElementById(element.id).style.backgroundColor = "#ff0000"
                         document.getElementById(correct_id).style.backgroundColor= "#00ff00"
+
+                        for(let i=0; i<data.length; i++){
+                            if(data[i].id!=correct_id && data[i].id !=element.id){
+                                document.getElementById(data[i].id).hidden = true
+                            }
+                        }
+                        alert("Incorrect!!")
                     }
+
+                    
                 })
 
             })
@@ -53,4 +90,9 @@ call.getQuestion().then((data)=>{
 
     
 });
+
+
+document.getElementById('next').addEventListener('click', (event)=>{
+    location.reload()
+})
 
