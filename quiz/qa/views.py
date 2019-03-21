@@ -24,8 +24,15 @@ class GetOptions(generics.ListAPIView):
         queryset = Option.objects.filter(question__id=q_id)
         return queryset
 class CorrectViewset(generics.ListAPIView):
-    queryset = Correct.objects.all()
+    
     serializer_class = CorrectSerializer
+
+    def get_queryset(self):
+        q_id = self.kwargs['id']
+        queryset = Correct.objects.filter(correct__question__id=q_id)
+        print("Hello"*20)
+        print(queryset)
+        return queryset
 
 
 

@@ -19,3 +19,6 @@ class Option(models.Model):
 
 class Correct(models.Model):
     correct = models.ForeignKey(Option, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.correct.question.question)+" "+str(self.correct.option)
