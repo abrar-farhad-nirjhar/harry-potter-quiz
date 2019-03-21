@@ -35,12 +35,12 @@ call.getQuestion().then((data)=>{
                     correct_id = data_two[0].correct.id
                     if(selected==correct_answer){
                         console.log(true)
-                        document.getElementById(element.id).style.backgroundColor="#32CD32"
+                        document.getElementById(element.id).style.backgroundColor="#00ff00"
                     }
                     else{
                         console.log(false)
-                        document.getElementById(element.id).style.backgroundColor = "#B22222"
-                        document.getElementById(correct_id).style.backgroundColor= "#32CD32"
+                        document.getElementById(element.id).style.backgroundColor = "#ff0000"
+                        document.getElementById(correct_id).style.backgroundColor= "#00ff00"
                     }
                 })
 
